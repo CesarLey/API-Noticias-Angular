@@ -1,152 +1,428 @@
-# 📰 API de Noticias
+# 📰 API de Noticias - Sistema Completo de Gestión de Noticias
 
-Una API REST completa para gestión de noticias construida con Node.js, Express y Sequelize, con persistencia en base de datos MySQL.
+<div align="center">
 
-## 🚀 Características
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=sequelize&logoColor=white)
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 
-- ✅ **CRUD completo** para todas las entidades (Perfiles, Estados, Categorías, Usuarios, Noticias)
-- ✅ **ORM Sequelize** para la gestión de base de datos
-- ✅ **Creación automática de tablas** mediante migraciones de Sequelize
-- ✅ **Relaciones entre modelos** (Foreign Keys)
-- ✅ **Configuración automática de base de datos** con XAMPP MySQL
+**Sistema fullstack profesional para la gestión y publicación de noticias**
 
-## 🛠️ Configuración para XAMPP MySQL
+[Características](#-características-principales) •
+[Instalación](#-instalación-rápida) •
+[Uso](#-uso) •
+[API Docs](#-documentación-de-la-api) •
+[Licencia](#-licencia)
 
-### Prerequisitos
-1. **XAMPP** instalado y funcionando
-2. **MySQL** activo en el panel de control de XAMPP
-3. **Node.js** v14 o superior
+</div>
 
-### Configuración de Base de Datos
-El proyecto está configurado para trabajar con XAMPP MySQL usando estas credenciales:
-- **Host**: 127.0.0.1
-- **Puerto**: 3306
-- **Usuario**: root
-- **Contraseña**: G@spar2005
-- **Base de datos**: db_news (se crea automáticamente)
+---
 
-### Instalación y Ejecución
+## 📋 Descripción
+
+Sistema completo de gestión de noticias que incluye un **backend API RESTful** desarrollado con Node.js y Express, y un **frontend interactivo** construido con Angular. Permite publicar, categorizar y gestionar noticias con imágenes, filtros por estado/categoría, y sistema de gestión de contenido.
+
+### 🎯 Casos de Uso
+
+- Portales de noticias regionales o nacionales
+- Blogs corporativos con gestión de contenido
+- Sistemas de publicación de artículos
+- Plataformas de información pública
+
+---
+
+## ✨ Características Principales
+
+### Backend (API REST)
+
+- 🔐 **Autenticación JWT** - Sistema seguro de autenticación
+- 📊 **CRUD Completo** - Gestión de perfiles, estados, categorías, usuarios y noticias
+- 🗃️ **ORM Sequelize** - Manejo elegante de base de datos MySQL
+- 🔄 **Relaciones de Datos** - Foreign Keys y asociaciones entre entidades
+- ✅ **Validaciones Robustas** - Middleware de validación con express-validator
+- 📝 **Logging de Requests** - Monitoreo de actividad de la API
+- 🌱 **Datos Iniciales** - Sistema de seeding automático
+- 🛡️ **Soft Delete** - Eliminación lógica para integridad referencial
+- 📖 **Documentación Swagger** - API docs interactiva en `/api/docs`
+
+### Frontend (Angular)
+
+- 🎨 **Interfaz Moderna** - Diseño responsivo y atractivo
+- 🔍 **Filtros Avanzados** - Por categoría y estado
+- 📱 **Responsive Design** - Adaptable a todos los dispositivos
+- 🖼️ **Gestión de Imágenes** - Soporte para URLs de imágenes
+- 🚀 **Standalone Components** - Arquitectura Angular moderna
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+### Backend
+```json
+{
+  "runtime": "Node.js v18+",
+  "framework": "Express.js 4.18",
+  "database": "MySQL 8.0",
+  "orm": "Sequelize 6.37",
+  "authentication": "JWT (jsonwebtoken)",
+  "validation": "express-validator",
+  "password-encryption": "bcryptjs"
+}
+```
+
+### Frontend
+```json
+{
+  "framework": "Angular 20.3",
+  "language": "TypeScript 5.9",
+  "http-client": "HttpClient",
+  "routing": "Angular Router",
+  "forms": "Reactive Forms"
+}
+```
+
+---
+
+## 📦 Instalación Rápida
+
+### Prerrequisitos
+
+- **Node.js** v18 o superior ([Descargar](https://nodejs.org/))
+- **MySQL** 8.0+ (XAMPP recomendado para Windows)
+- **npm** o **yarn**
+- **Git**
+
+### 1️⃣ Clonar el Repositorio
+
 ```bash
-# 1. Instalar dependencias
+git clone https://github.com/CesarLey/API-Noticias-Angular.git
+cd API-Noticias-Angular
+```
+
+### 2️⃣ Configurar Backend
+
+```bash
+# Navegar a la carpeta del backend
+cd ApiNews
+
+# Instalar dependencias
 npm install
 
-# 2. (Opcional) Configurar base de datos manualmente
-npm run setup-db
+# Configurar variables de entorno
+# Edita el archivo .env con tus credenciales de MySQL
+# DB_HOST=localhost
+# DB_USER=root
+# DB_PASSWORD=tu_contraseña
+# DB_NAME=db_news
+# DB_PORT=3306
+# PORT=3000
 
-# 3. Ejecutar la aplicación
+# Iniciar MySQL en XAMPP
+# Asegúrate de que MySQL esté corriendo en el puerto 3306
+
+# Ejecutar el servidor
 npm start
 ```
 
-La aplicación creará automáticamente la base de datos `db_news` si no existe.
-- ✅ **Validaciones de datos** en middlewares
-- ✅ **Manejo de errores** centralizado
-- ✅ **Logging de requests** 
-- ✅ **Soft delete** para mantener integridad referencial
-- ✅ **Datos iniciales** (seeding) automático
-- ✅ **Configuración fácil** de credenciales de base de datos
+El backend creará automáticamente:
+- ✅ Base de datos `db_news`
+- ✅ Todas las tablas necesarias
+- ✅ Datos de ejemplo (2 usuarios, 5 noticias, 2 categorías, 5 estados)
 
-## 📋 Prerrequisitos
-
-- **Node.js** (versión 14 o superior)
-- **XAMPP** con MySQL activado
-- **npm** o **yarn**
-
-## 🛠️ Instalación
-
-### 1. Instalar dependencias
+### 3️⃣ Configurar Frontend
 
 ```bash
-cd ApiNews
+# Abrir nueva terminal y navegar al frontend
+cd api_news_frontend/api_news_frontend
+
+# Instalar dependencias
 npm install
+
+# Iniciar el servidor de desarrollo
+npm start
 ```
 
-### 2. Configurar XAMPP
+El frontend se abrirá automáticamente en `http://localhost:4200`
 
-1. Abrir el **Panel de Control de XAMPP**
-2. Iniciar los servicios de **Apache** y **MySQL**
-3. Hacer clic en **"Admin"** del servicio MySQL para abrir phpMyAdmin
+---
 
-### 3. Crear la base de datos
+## 🚀 Uso
+### Acceder a la Aplicación
 
-En phpMyAdmin, ejecutar el siguiente SQL:
+| Servicio | URL | Descripción |
+|----------|-----|-------------|
+| **Frontend** | http://localhost:4200 | Interfaz de usuario principal |
+| **Backend API** | http://localhost:3000 | API REST |
+| **Swagger Docs** | http://localhost:3000/api/docs | Documentación interactiva de la API |
 
-```sql
-CREATE DATABASE db_news;
+### Funcionalidades Disponibles
+
+#### 👁️ Usuario Visitante (Sin autenticación)
+- ✅ Ver listado de noticias publicadas
+- ✅ Filtrar por categoría y estado
+- ✅ Ver detalle completo de cada noticia
+- ✅ Búsqueda y navegación
+
+---
+
+## 📖 Documentación de la API
+
+### Endpoints Principales
+
+#### 🔐 Autenticación
+```http
+POST /api/auth/login       # Iniciar sesión
+POST /api/auth/register    # Registrar usuario
 ```
 
-### 4. Configurar variables de entorno
+#### 📰 Noticias
+```http
+GET    /api/news           # Listar todas las noticias
+GET    /api/news/:id       # Obtener noticia específica
+GET    /api/news/category/:id  # Filtrar por categoría
+GET    /api/news/state/:id     # Filtrar por estado
+POST   /api/news           # Crear noticia (requiere auth)
+PUT    /api/news/:id       # Actualizar noticia (requiere auth)
+DELETE /api/news/:id       # Eliminar noticia (requiere auth)
+```
 
-El archivo `.env` ya está configurado con valores por defecto para XAMPP:
+#### 🏷️ Categorías
+```http
+GET    /api/categories     # Listar categorías
+GET    /api/categories/:id # Obtener categoría
+POST   /api/categories     # Crear categoría (admin)
+PUT    /api/categories/:id # Actualizar categoría (admin)
+DELETE /api/categories/:id # Eliminar categoría (admin)
+```
+
+#### 🗺️ Estados
+```http
+GET    /api/states         # Listar estados
+GET    /api/states/:id     # Obtener estado
+POST   /api/states         # Crear estado (admin)
+PUT    /api/states/:id     # Actualizar estado (admin)
+DELETE /api/states/:id     # Eliminar estado (admin)
+```
+
+#### 👥 Usuarios
+```http
+GET    /api/users          # Listar usuarios (admin)
+GET    /api/users/:id      # Obtener usuario
+PUT    /api/users/:id      # Actualizar usuario
+DELETE /api/users/:id      # Eliminar usuario (admin)
+```
+
+### Ejemplo de Petición
+
+```bash
+# Obtener todas las noticias
+curl http://localhost:3000/api/news
+
+# Crear una noticia (requiere token JWT)
+curl -X POST http://localhost:3000/api/news \
+  -H "Authorization: Bearer <tu_token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "titulo": "Nueva noticia importante",
+    "descripcion": "Descripción completa de la noticia...",
+    "categoria_id": 1,
+    "estado_id": 1,
+    "imagen": "https://ejemplo.com/imagen.jpg"
+  }'
+```
+
+---
+
+## 🗂️ Estructura del Proyecto
+
+```
+API-Noticias-Angular/
+│
+├── ApiNews/                      # Backend (API REST)
+│   ├── controllers/              # Controladores de rutas
+│   ├── models/                   # Modelos Sequelize
+│   ├── routes/                   # Definición de rutas
+│   ├── services/                 # Lógica de negocio
+│   ├── middlewares/              # Middlewares personalizados
+│   ├── validators/               # Validaciones de datos
+│   ├── config.js                 # Configuración general
+│   ├── config.db.js              # Configuración de BD
+│   ├── app.js                    # Punto de entrada
+│   ├── seedDatabase.js           # Datos iniciales
+│   └── package.json              # Dependencias del backend
+│
+└── api_news_frontend/
+    └── api_news_frontend/        # Frontend (Angular)
+        ├── src/
+        │   ├── app/
+        │   │   ├── components/   # Componentes reutilizables
+        │   │   ├── features/     # Páginas principales
+        │   │   ├── core/         # Servicios y guards
+        │   │   ├── services/     # Servicios de datos
+        │   │   └── interfaces/   # Tipos TypeScript
+        │   ├── assets/           # Recursos estáticos
+        │   └── styles.css        # Estilos globales
+        ├── angular.json          # Configuración Angular
+        └── package.json          # Dependencias del frontend
+```
+
+---
+
+## 📊 Modelo de Datos
+
+### Entidades Principales
+
+#### 📰 News (Noticias)
+- `id`, `titulo`, `slug`, `descripcion`, `imagen`
+- `categoria_id` → Categories
+- `estado_id` → States
+- `usuario_id` → Users
+- `fecha_publicacion`, `estado_publicacion`
+- `visitas`, `comentarios_count`
+
+#### 🏷️ Categories (Categorías)
+- `id`, `nombre`, `descripcion`
+
+#### 🗺️ States (Estados)
+- `id`, `nombre`, `abreviacion`, `activo`
+
+#### 👥 Users (Usuarios)
+- `id`, `nombre`, `apellidos`, `nick`, `correo`
+- `contraseña` (encriptada), `bio`, `avatar`
+- `perfil_id` → Profiles
+- `verificado`, `ultima_actividad`
+
+#### 🎭 Profiles (Perfiles)
+- `id`, `nombre`
+- Tipos: Administrador, Contribuidor
+
+---
+
+## 🔧 Configuración Avanzada
+
+### Variables de Entorno (.env)
 
 ```env
-# Variables de entorno para la base de datos
+# Base de Datos
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=
+DB_PASSWORD=tu_contraseña_segura
 DB_NAME=db_news
 DB_PORT=3306
 
-# Puerto del servidor
+# Servidor
 PORT=3000
+NODE_ENV=development
+
+# JWT (opcional - agregar si implementas auth)
+JWT_SECRET=tu_clave_secreta_muy_segura
+JWT_EXPIRES_IN=7d
 ```
 
-**Importante:** Si tu configuración de MySQL es diferente, modifica estos valores:
-- `DB_PASSWORD`: Si configuraste una contraseña para el usuario root
-- `DB_USER`: Si usas un usuario diferente a root
-- `DB_PORT`: Si MySQL corre en un puerto diferente al 3306
+### Personalizar Datos Iniciales
 
-## 🏃‍♂️ Ejecución
+Edita `seedDatabase.js` para modificar:
+- Usuarios de ejemplo
+- Categorías disponibles
+- Estados/regiones
+- Noticias de prueba
 
-### Modo desarrollo (con auto-reload)
+---
+
+## 🛡️ Seguridad
+
+- 🔐 Contraseñas encriptadas con **bcryptjs**
+- 🔑 Autenticación basada en **JWT**
+- ✅ Validación de datos con **express-validator**
+- 🛡️ Headers de seguridad con **CORS**
+- 🔒 Protección contra inyección SQL (Sequelize ORM)
+
+---
+
+## 🐛 Solución de Problemas
+
+### Error: "ECONNREFUSED" al iniciar
+
+**Solución**: Verifica que MySQL esté corriendo en XAMPP
 ```bash
-npm run dev
+# Windows - Panel XAMPP
+# Verifica que el módulo MySQL esté en verde (Running)
 ```
 
-### Modo producción
+### Error: "Access denied for user"
+
+**Solución**: Verifica las credenciales en `.env`
 ```bash
-npm start
+# Asegúrate que DB_USER y DB_PASSWORD sean correctos
+# Por defecto XAMPP usa: user=root, password=(vacío)
 ```
 
-## 🧰 Comandos npm disponibles
+### Puerto 3000 ya en uso
 
-El proyecto incluye los siguientes scripts definidos en `package.json`. Aquí tienes el nombre del comando, cómo ejecutarlo y una breve descripción de su propósito.
+**Solución**: Cambia el puerto en `.env`
+```env
+PORT=3001
+```
 
-- `npm start`
-    - Propósito: Inicia la aplicación en modo producción ejecutando `node app.js`.
-    - Uso: arranca el servidor Express usando la entrada principal `app.js`.
+### Frontend no se conecta al Backend
 
-- `npm run dev`
-    - Propósito: Inicia la aplicación en modo desarrollo con vigilancia de cambios usando `node --watch app.js`.
-    - Uso: vuelve a cargar automáticamente la aplicación cuando detecta cambios en el código fuente (útil durante el desarrollo).
+**Solución**: Verifica el proxy en `proxy.conf.json`
+```json
+{
+  "/api": {
+    "target": "http://localhost:3000",
+    "secure": false
+  }
+}
+```
 
-- `npm run setup-db`
-    - Propósito: Ejecuta el script `setup-database.js` que prepara la base de datos (crea la base de datos y/o tablas necesarias según el script).
-    - Uso: utilízalo para crear/ajustar la base de datos antes de ejecutar la API por primera vez o cuando necesites reconfigurar la BD.
+---
 
-Si necesitas añadir más scripts (tests, lint, seed, etc.), puedes editarlos en `package.json` bajo la sección `scripts`.
+## 🤝 Contribuir
 
-El servidor se iniciará en: **http://localhost:3000**
+Las contribuciones son bienvenidas. Para cambios importantes:
 
-## 📊 Estructura de la Base de Datos
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
-La API gestiona las siguientes entidades:
+---
 
-### 🏷️ Profiles (Perfiles)
-- `id` - ID único
-- `nombre` - Nombre del perfil
-- `createdAt`, `updatedAt` - Timestamps automáticos
+## 📝 Licencia
 
-### 🗺️ States (Estados)
-- `id` - ID único  
-- `nombre` - Nombre del estado
-- `abreviacion` - Abreviación del estado
-- `activo` - Estado activo/inactivo
-- Campos de auditoría: `UserAlta`, `FechaAlta`, `UserMod`, `FechaMod`, `UserBaja`, `FechaBaja`
-- `createdAt`, `updatedAt` - Timestamps automáticos
+Este proyecto está bajo la Licencia MIT. Ver archivo `LICENSE` para más detalles.
 
-### 📂 Categories (Categorías)
-- `id` - ID único
-- `nombre` - Nombre de la categoría
+---
+
+## 👤 Autor
+
+**Cesar Ley**
+
+- GitHub: [@CesarLey](https://github.com/CesarLey)
+- Repositorio: [API-Noticias-Angular](https://github.com/CesarLey/API-Noticias-Angular)
+
+---
+
+## 🙏 Agradecimientos
+
+- Express.js por el excelente framework
+- Sequelize por el ORM robusto
+- Angular Team por el framework frontend
+- Comunidad Open Source
+
+---
+
+<div align="center">
+
+**⭐ Si este proyecto te fue útil, considera darle una estrella ⭐**
+
+Hecho con ❤️ y ☕
+
+</div>
 - `descripcion` - Descripción de la categoría
 - `activo` - Estado activo/inactivo
 - Campos de auditoría similares a States
